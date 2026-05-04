@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projet RFID</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<canvas id="networkCanvas"></canvas>
+<header class="header">
+    <a href="projets.html" class="back-btn">← Retour aux projets</a>
+    <h2>Projet RFID</h2>
+
+    <div class="menu-container">
+        <div class="hamburger" id="menuBtn">☰</div>
+
+        <div class="dropdown" id="dropdownMenu">
+            <a href="index.html">Profil</a>
+            <a href="projets.html">Projets</a>
+            <a href="veille.html">Veille</a>
+            <a href="parcours.html">Parcours</a>
+        </div>
+    </div>
+</div>
+</header>
+
+<section>
+
+<h1>Bilan professionnel du projet</h1>
+
+<div class="text-card">
+
+<p>
+Dans le cadre de mes projets personnels, j’ai conçu et réalisé un système simulant un lecteur de badge destiné à contrôler l’accès à un immeuble.
+</p>
+
+<p>
+Ce projet repose sur l’utilisation combinée d’un lecteur RFID, d’un Raspberry Pi 4 modèle B et d’une carte Arduino. L’objectif était de mettre en place un dispositif capable d’authentifier un badge et de déclencher différentes actions en fonction du résultat de cette vérification.
+</p>
+
+<p>
+L’Arduino a été utilisée pour la gestion des composants électroniques (LED, relais), tandis que le Raspberry Pi assurait la logique de traitement et la gestion globale du système.
+</p>
+
+<p>
+Le fonctionnement du système est le suivant : lorsqu’un badge autorisé est détecté, une LED verte s’allume et déclenche l’ouverture de la porte. À l’inverse, en cas de badge non reconnu, une LED rouge s’allume afin de signaler un refus d’accès.
+</p>
+
+<p>
+Dans une phase d’évolution du projet, j’ai intégré un module relais permettant d’étendre les fonctionnalités du système. Ce relais est activé simultanément avec la LED verte et permet d’allumer un éclairage simulant le couloir de l’immeuble lors de l’ouverture de la porte.
+</p>
+
+</div>
+
+<div class="text-card">
+
+<h2>Apports et compétences développées</h2>
+
+<ul>
+<li>Mise en œuvre d’un système hybride (Raspberry Pi + Arduino)</li>
+<li>Utilisation d’un lecteur RFID pour la gestion des accès</li>
+<li>Programmation et communication entre équipements</li>
+<li>Gestion des entrées/sorties (GPIO, signaux)</li>
+<li>Intégration de composants électroniques (LED, relais)</li>
+<li>Logique de contrôle d’accès</li>
+</ul>
+
+<p>
+Ce projet m’a également permis de mieux comprendre le fonctionnement des systèmes de sécurité physiques et leur interaction avec des systèmes informatiques.
+</p>
+
+</div>
+
+<div class="text-card">
+
+<h2>Conclusion</h2>
+
+<p>
+Ce projet constitue une approche concrète des systèmes de contrôle d’accès utilisés en entreprise. Il m’a permis de combiner des compétences en informatique, électronique et automatisation, tout en développant mon autonomie et ma capacité à faire évoluer une solution technique.
+</p>
+
+</div>
+
+</section>
+
+<script src="script.js"></script>
+<button id="scrollTopBtn" class="scroll-top-btn">↑</button>
+</body>
+</html>

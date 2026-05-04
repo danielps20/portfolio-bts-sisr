@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Projets - Portfolio BTS SISR</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<canvas id="networkCanvas"></canvas>
+
+<header class="header">
+    <h2>Projets</h2>
+
+    <div class="menu-container">
+        <div class="hamburger" id="menuBtn">☰</div>
+
+        <div class="dropdown" id="dropdownMenu">
+            <a href="index.html">Profil</a>
+            <a href="projets.html">Projets</a>
+            <a href="veille.html">Veille</a>
+            <a href="parcours.html">Parcours</a>
+        </div>
+    </div>
+</header>
+
+<a href="index.html" class="back-btn">← Retour</a>
+
+<section>
+    <h1>Mes projets BTS SISR</h1>
+
+    <div class="project-grid">
+
+        <a href="projet-rfid.html" class="project-card">
+            <h3>Contrôle d’accès RFID</h3>
+            <p>Système de contrôle d’accès avec Raspberry Pi et Arduino.</p>
+            <div class="tech-tags">Raspberry Pi • Arduino • RFID • GPIO</div>
+        </a>
+
+        <a href="projet-reseau.html" class="project-card">
+            <h3>Infrastructure réseau</h3>
+            <p>Mise en place d’un réseau local sécurisé avec segmentation.</p>
+            <div class="tech-tags">Switch • VLAN • DHCP • Réseau</div>
+        </a>
+
+        <a href="projet-securite.html" class="project-card">
+            <h3>Projet cybersécurité</h3>
+            <p>Analyse et sécurisation d’un système informatique.</p>
+            <div class="tech-tags">Firewall • Logs • Sécurité</div>
+        </a>
+
+    </div>
+</section>
+
+<button id="scrollTopBtn" class="scroll-top-btn">↑</button>
+
+<script src="script.js"></script>
+</body>
+</html>

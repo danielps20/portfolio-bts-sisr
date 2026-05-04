@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille - VPN</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<canvas id="networkCanvas"></canvas>
+<header class="header">
+    <a href="veille.html" class="back-btn">← Retour aux veilles</a>
+    <h2>Veille technologique</h2>
+
+    <div class="menu-container">
+        <div class="hamburger" id="menuBtn">☰</div>
+
+        <div class="dropdown" id="dropdownMenu">
+            <a href="index.html">Profil</a>
+            <a href="projets.html">Projets</a>
+            <a href="veille.html">Veille</a>
+            <a href="parcours.html">Parcours</a>
+        </div>
+    </div>
+</div>
+</header>
+
+<section>
+
+<h1>Les VPN sont-ils encore sécurisés en entreprise ?</h1>
+
+<div class="text-card">
+
+<h2>1. Introduction</h2>
+<p>
+Avec le développement du télétravail, les VPN (Virtual Private Network) sont devenus indispensables
+pour accéder aux réseaux d’entreprise à distance.
+</p>
+
+<p>
+Cependant, l’apparition de nouvelles vulnérabilités soulève des questions sur leur niveau de sécurité actuel.
+</p>
+
+</div>
+
+<div class="text-card">
+
+<h2>2. Fonctionnement d’un VPN</h2>
+
+<p>
+Un VPN permet de créer un tunnel sécurisé entre un utilisateur et un réseau interne.
+</p>
+
+<ul>
+<li>Chiffrement des données</li>
+<li>Accès sécurisé à distance</li>
+<li>Protection des échanges réseau</li>
+</ul>
+
+<p><strong>Types de VPN :</strong></p>
+<ul>
+<li>VPN site à site</li>
+<li>VPN client (utilisateur distant)</li>
+</ul>
+
+</div>
+
+<div class="text-card">
+
+<h2>3. Problèmes de sécurité actuels</h2>
+
+<h3>🔓 Vulnérabilités techniques</h3>
+<p>
+Certains équipements VPN présentent des failles exploitées par des attaquants.
+Des alertes régulières sont publiées par le CERT-FR.
+</p>
+
+<h3>🎯 Cible privilégiée</h3>
+<ul>
+<li>Attaques par brute force</li>
+<li>Vol d’identifiants</li>
+<li>Exploitation de failles logicielles</li>
+</ul>
+
+<h3>👤 Failles humaines</h3>
+<ul>
+<li>Mots de passe faibles</li>
+<li>Absence de double authentification (MFA)</li>
+</ul>
+
+</div>
+
+<div class="text-card">
+
+<h2>4. Impacts pour les entreprises</h2>
+
+<ul>
+<li>Intrusion dans le réseau interne</li>
+<li>Accès aux données sensibles</li>
+<li>Propagation de logiciels malveillants</li>
+</ul>
+
+<p>
+👉 Un VPN compromis peut entraîner la compromission totale du réseau.
+</p>
+
+</div>
+
+<div class="text-card">
+
+<h2>5. Solutions et bonnes pratiques</h2>
+
+<p>Recommandations de l’ANSSI :</p>
+
+<ul>
+<li>Activation du MFA (authentification multi-facteur)</li>
+<li>Mise à jour régulière des équipements</li>
+<li>Limitation des accès utilisateurs</li>
+<li>Surveillance des connexions réseau</li>
+</ul>
+
+</div>
+
+<div class="text-card">
+
+<h2>6. Alternative : le modèle Zero Trust</h2>
+
+<p>
+Le modèle Zero Trust repose sur un principe simple :
+aucune confiance par défaut.
+</p>
+
+<ul>
+<li>Vérification systématique des accès</li>
+<li>Contrôle permanent des utilisateurs</li>
+<li>Réduction des privilèges</li>
+</ul>
+
+<p>
+Cette approche est de plus en plus adoptée en remplacement ou en complément des VPN traditionnels.
+</p>
+
+</div>
+
+<div class="text-card">
+
+<h2>7. Analyse (niveau BTS SISR)</h2>
+
+<p>
+Les VPN restent une solution utile mais ne sont plus suffisants seuls pour assurer la sécurité des infrastructures modernes.
+</p>
+
+<p>
+Ils doivent être intégrés dans une architecture plus globale incluant surveillance, authentification renforcée et segmentation réseau.
+</p>
+
+</div>
+
+<div class="text-card">
+
+<h2>8. Limites</h2>
+
+<ul>
+<li>Complexité de mise en place des solutions modernes</li>
+<li>Coûts d’infrastructure</li>
+<li>Dépendance au comportement des utilisateurs</li>
+</ul>
+
+</div>
+
+<div class="text-card">
+
+<h2>9. Conclusion</h2>
+
+<p>
+Les VPN ne sont pas obsolètes mais leur sécurité dépend fortement de leur configuration et de leur gestion.
+</p>
+
+<p>
+Ils restent essentiels mais doivent évoluer vers des modèles plus robustes comme le Zero Trust.
+</p>
+
+</div>
+
+</section>
+
+<script src="script.js"></script>
+<button id="scrollTopBtn" class="scroll-top-btn">↑</button>
+</body>
+</html>

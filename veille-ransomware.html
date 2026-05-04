@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille - Ransomware</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<canvas id="networkCanvas"></canvas>
+<header class="header">
+    <a href="veille.html" class="back-btn">← Retour aux veilles</a>
+    <h2>Veille technologique</h2>
+
+    <div class="menu-container">
+        <div class="hamburger" id="menuBtn">☰</div>
+
+        <div class="dropdown" id="dropdownMenu">
+            <a href="index.html">Profil</a>
+            <a href="projets.html">Projets</a>
+            <a href="veille.html">Veille</a>
+            <a href="parcours.html">Parcours</a>
+        </div>
+    </div>
+</div>
+</header>
+
+<section>
+
+<h1>Les attaques ransomware ciblant les infrastructures réseau</h1>
+
+<div class="text-card">
+
+<h2>1. Introduction</h2>
+<p>
+Les attaques informatiques sont en constante augmentation, notamment les ransomwares
+(rançongiciels), qui bloquent l’accès aux systèmes ou aux données en échange d’une rançon.
+</p>
+
+<p>
+Cette veille a pour objectif d’analyser leur impact sur les infrastructures réseau et systèmes en entreprise.
+</p>
+
+</div>
+
+<div class="text-card">
+
+<h2>2. Qu’est-ce qu’un ransomware ?</h2>
+
+<p>
+Un ransomware est un logiciel malveillant qui chiffre les données d’un système et empêche l’accès aux fichiers ou au réseau.
+</p>
+
+<p><strong>Principaux vecteurs d’infection :</strong></p>
+<ul>
+<li>Emails de phishing</li>
+<li>Failles non corrigées</li>
+<li>Accès RDP mal sécurisé</li>
+</ul>
+
+</div>
+
+<div class="text-card">
+
+<h2>3. Cibles dans une infrastructure SISR</h2>
+
+<p>
+Les ransomwares visent l’ensemble de l’infrastructure informatique :
+</p>
+
+<ul>
+<li>Serveurs Windows</li>
+<li>Active Directory</li>
+<li>Postes utilisateurs</li>
+<li>Sauvegardes</li>
+<li>Équipements réseau</li>
+</ul>
+
+<p>
+Selon le CERT-FR, les attaquants cherchent souvent à compromettre l’ensemble du système.
+</p>
+
+</div>
+
+<div class="text-card">
+
+<h2>4. Impacts des ransomwares</h2>
+
+<h3>🛑 Interruption des services</h3>
+<ul>
+<li>Réseaux bloqués</li>
+<li>Serveurs inaccessibles</li>
+<li>Arrêt de l’activité</li>
+</ul>
+
+<h3>💾 Perte ou vol de données</h3>
+<ul>
+<li>Chiffrement des fichiers</li>
+<li>Exfiltration de données sensibles</li>
+<li>Double extorsion</li>
+</ul>
+
+<h3>💰 Impact financier</h3>
+<ul>
+<li>Paiement de rançon</li>
+<li>Coût de récupération</li>
+<li>Perte d’exploitation</li>
+</ul>
+
+<h3>🧑‍💼 Impact sur l’image</h3>
+<ul>
+<li>Perte de confiance client</li>
+<li>Atteinte à la réputation</li>
+</ul>
+
+</div>
+
+<div class="text-card">
+
+<h2>5. Moyens de protection</h2>
+
+<p>Selon les recommandations de l’ANSSI :</p>
+
+<ul>
+<li>Sauvegardes régulières (hors ligne si possible)</li>
+<li>Mises à jour et patch management</li>
+<li>Segmentation réseau</li>
+<li>Contrôle des accès</li>
+<li>Sensibilisation des utilisateurs</li>
+</ul>
+
+</div>
+
+<div class="text-card">
+
+<h2>6. Analyse (niveau BTS SIO SISR)</h2>
+
+<p>
+Les ransomwares exploitent principalement des failles techniques et humaines.
+</p>
+
+<p>
+L’administrateur systèmes et réseaux joue un rôle essentiel dans :
+</p>
+
+<ul>
+<li>La sécurisation des infrastructures</li>
+<li>La supervision des systèmes</li>
+<li>La réaction en cas d’incident</li>
+</ul>
+
+</div>
+
+<div class="text-card">
+
+<h2>7. Limites</h2>
+
+<ul>
+<li>Aucune solution de sécurité n’est totalement fiable</li>
+<li>Les attaques évoluent rapidement</li>
+<li>Le facteur humain reste une vulnérabilité majeure</li>
+</ul>
+
+</div>
+
+<div class="text-card">
+
+<h2>8. Conclusion</h2>
+
+<p>
+Les ransomwares représentent une menace majeure pour les infrastructures systèmes et réseaux.
+</p>
+
+<p>
+Ils impactent directement la disponibilité, l’intégrité et la confidentialité des données.
+</p>
+
+<p>
+En conclusion, ces attaques constituent un enjeu critique pour les professionnels du domaine SISR.
+</p>
+
+</div>
+
+</section>
+
+<script src="script.js"></script>
+<button id="scrollTopBtn" class="scroll-top-btn">↑</button>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Veille - Portfolio BTS SISR</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<canvas id="networkCanvas"></canvas>
+
+<header class="header">
+    <h2>Veille technologique</h2>
+
+    <div class="menu-container">
+        <div class="hamburger" id="menuBtn">☰</div>
+
+        <div class="dropdown" id="dropdownMenu">
+            <a href="index.html">Profil</a>
+            <a href="projets.html">Projets</a>
+            <a href="veille.html">Veille</a>
+            <a href="parcours.html">Parcours</a>
+        </div>
+    </div>
+</header>
+
+<a href="index.html" class="back-btn">← Retour</a>
+
+<section>
+    <h1>Veille technologique</h1>
+
+    <div class="project-grid">
+
+        <a href="veille-ram.html" class="project-card">
+            <h3>Crise de la RAM</h3>
+            <p>Impact sur les équipements Cisco et les infrastructures IT.</p>
+            <div class="tech-tags">Hardware • Cloud • Cisco</div>
+        </a>
+
+        <a href="veille-ransomware.html" class="project-card">
+            <h3>Ransomware</h3>
+            <p>Attaques sur les infrastructures réseau et systèmes.</p>
+            <div class="tech-tags">Cyberattaque • Sécurité • Réseau</div>
+        </a>
+
+        <a href="veille-vpn.html" class="project-card">
+            <h3>VPN en entreprise</h3>
+            <p>Sécurité des VPN et alternatives Zero Trust.</p>
+            <div class="tech-tags">VPN • Zero Trust • Authentification</div>
+        </a>
+
+    </div>
+</section>
+
+<button id="scrollTopBtn" class="scroll-top-btn">↑</button>
+
+<script src="script.js"></script>
+</body>
+</html>
