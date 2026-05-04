@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACL Router</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+    <a href="projets.html" class="back-btn">← Retour aux projets</a>
+    <h2>ACL Router</h2>
+
+    <div class="menu-container">
+        <div class="hamburger" id="menuBtn">☰</div>
+
+        <div class="dropdown" id="dropdownMenu">
+            <a href="index.html">Profil</a>
+            <a href="projets.html">Projets</a>
+            <a href="veille.html">Veille</a>
+            <a href="parcours.html">Parcours</a>
+        </div>
+    </div>
+</div>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>🎯 Objectif</h2>
+    <p>
+      Mettre en place des ACL sur Router5 afin de contrôler les flux entre LAN,
+      DMZ et Internet, avec filtrage et journalisation.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>🧭 Topologie</h2>
+
+    <ul>
+      <li>LAN : 172.17.0.0/16</li>
+      <li>DMZ : 10.54.0.0/24</li>
+      <li>Internet : 160.250.0.0 → 193.253.0.0</li>
+    </ul>
+
+    <div class="box">
+      <h3>Interfaces Router5</h3>
+      <ul>
+        <li>G0/0 → LAN</li>
+        <li>G0/1 → DMZ</li>
+        <li>G0/2 → Internet</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="card">
+    <h2>🔐 ACL IN (LAN + DMZ)</h2>
+
+    <code>
+ip access-list extended ACL_IN
+ permit ip 172.17.0.0 0.0.255.255 any
+ permit ip 10.54.0.0 0.0.0.255 any
+ deny ip any any
+    </code>
+
+    <p>Application sur G0/0 et G0/1 (in)</p>
+
+  </div>
+
+  <div class="card">
+    <h2>🌍 ACL OUT Internet</h2>
+
+    <code>
+ip access-list extended ACL_OUT_INTERNET
+ permit ip 172.17.0.0 0.0.255.255 any
+ permit ip 10.54.0.0 0.0.0.255 any
+ deny ip any any
+    </code>
+
+    <p>Application sur G0/2 (out)</p>
+
+  </div>
+
+  <div class="card">
+    <h2>⚠️ Règles importantes</h2>
+
+    <ul>
+      <li class="ok">LAN → Internet autorisé</li>
+      <li class="ok">DMZ → Internet autorisé</li>
+      <li class="bad">Internet → LAN interdit</li>
+      <li class="bad">Internet → DMZ interdit</li>
+    </ul>
+
+  </div>
+
+  <div class="card">
+    <h2>🧪 Tests</h2>
+
+    <ul>
+      <li class="ok">LAN → Internet (ping / HTTP)</li>
+      <li class="ok">DMZ → Internet (ping)</li>
+      <li class="bad">Internet → LAN (bloqué)</li>
+      <li class="bad">Internet → DMZ (bloqué)</li>
+    </ul>
+
+  </div>
+
+  <div class="card">
+    <h2>📊 Vérification</h2>
+
+    <code>show access-lists</code>
+
+    <p>✔ Les compteurs doivent augmenter lors des tests</p>
+
+  </div>
+
+  <div class="card">
+    <h2>🏁 Conclusion</h2>
+
+    <p>
+      Les ACL permettent de sécuriser le routage entre LAN, DMZ et Internet en
+      appliquant une politique de filtrage stricte et traçable via logs.
+    </p>
+
+  </div>
+
+</div>
+<script src="script.js"></script>
+<button id="scrollTopBtn" class="scroll-top-btn">↑</button>
+</body>
+</html>

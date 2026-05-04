@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EyesOfNetwork</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+    <a href="projets.html" class="back-btn">← Retour aux projets</a>
+    <h2>Supervision EyesOfNetwork</h2>
+
+    <div class="menu-container">
+        <div class="hamburger" id="menuBtn">☰</div>
+
+        <div class="dropdown" id="dropdownMenu">
+            <a href="index.html">Profil</a>
+            <a href="projets.html">Projets</a>
+            <a href="veille.html">Veille</a>
+            <a href="parcours.html">Parcours</a>
+        </div>
+    </div>
+</div>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>🎯 Objectif</h2>
+    <p>
+      Mettre en place une supervision centralisée des équipements réseau via EyesOfNetwork (basé sur Nagios).
+      Surveillance des serveurs, routeurs, switchs, services et périphériques.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>🧠 Contexte</h2>
+    <ul>
+      <li>Outil : EyesOfNetwork 3.1</li>
+      <li>Basé sur Nagios (ITIL)</li>
+      <li>Protocoles : SNMP / plugins Nagios</li>
+      <li>Port SNMP : UDP 161 / 162</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>⚙️ Activation SNMP</h2>
+
+    <div class="box">
+      <h3>Cisco (Switch / Routeur)</h3>
+      <code>
+snmp-server community NomCommunauté
+      </code>
+    </div>
+
+    <div class="box">
+      <h3>Windows</h3>
+      <ul>
+        <li>Activer SNMP via fonctionnalités Windows</li>
+        <li>Configurer communauté SNMP</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="card">
+    <h2>🔍 Test SNMP</h2>
+
+    <ul>
+      <li>Interface : Administration → snmpwalk</li>
+      <li>Tester une IP d’équipement</li>
+    </ul>
+
+  </div>
+
+  <div class="card">
+    <h2>🧩 Configuration Nagios</h2>
+
+    <div class="box">
+      <h3>Modifier communauté SNMP</h3>
+      <p>$USER2$ → ex : infosio</p>
+    </div>
+
+    <div class="box">
+      <h3>Contact admin</h3>
+      <p>Modifier email dans configuration Nagios</p>
+    </div>
+
+  </div>
+
+  <div class="card">
+    <h2>🖥️ Ajout d’hôte</h2>
+
+    <ul>
+      <li>Administration → Equipements → Add Host</li>
+      <li>Template : GENERIC_HOST</li>
+      <li>Exporter configuration après ajout</li>
+    </ul>
+
+  </div>
+
+  <div class="card">
+    <h2>📊 Vérification état</h2>
+
+    <code>
+Disponibilités → Evénements → Vue équipements
+    </code>
+
+    <p>Si PENDING → valider commande</p>
+
+  </div>
+
+  <div class="card">
+    <h2>🧪 Commandes utiles SNMP</h2>
+
+    <div class="box">
+      <h3>CPU Load</h3>
+      <code>
+./check_snmp_load.pl -H IP -C comm -w 80 -c 90
+      </code>
+    </div>
+
+    <div class="box">
+      <h3>Interfaces réseau</h3>
+      <code>
+./check_snmp_int.pl -H IP -C comm -n interface -v
+      </code>
+    </div>
+
+    <div class="box">
+      <h3>Windows DNS</h3>
+      <code>
+./check_snmp_win.pl -H IP -C comm -n DNS
+      </code>
+    </div>
+
+    <div class="box">
+      <h3>DHCP</h3>
+      <code>
+./check_dhcp_addfree -H IP -C comm -w 50 -c 10
+      </code>
+    </div>
+
+    <div class="box">
+      <h3>Imprimante</h3>
+      <code>
+./check_snmp_printer -H IP -C comm -x MODEL
+      </code>
+    </div>
+
+  </div>
+
+  <div class="card">
+    <h2>🚀 Bonnes pratiques</h2>
+
+    <ul>
+      <li class="ok">Exporter config après modification</li>
+      <li class="ok">Utiliser templates</li>
+      <li class="ok">Définir seuils warning / critical</li>
+      <li class="ok">Supervision centralisée active</li>
+    </ul>
+
+  </div>
+
+</div>
+<script src="script.js"></script>
+<button id="scrollTopBtn" class="scroll-top-btn">↑</button>
+</body>
+</html>

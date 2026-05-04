@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPv6 / DHCPv6</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+    <a href="projets.html" class="back-btn">← Retour aux projets</a>
+    <h2>IPv6 / DHCPv6 / SLAAC</h2>
+
+    <div class="menu-container">
+        <div class="hamburger" id="menuBtn">☰</div>
+
+        <div class="dropdown" id="dropdownMenu">
+            <a href="index.html">Profil</a>
+            <a href="projets.html">Projets</a>
+            <a href="veille.html">Veille</a>
+            <a href="parcours.html">Parcours</a>
+        </div>
+    </div>
+</div>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>🎯 Objectif</h2>
+    <p>
+      Mettre en place un réseau IPv6 avec routage statique et autoconfiguration SLAAC entre deux routeurs.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>🧠 Topologie</h2>
+
+    <ul>
+      <li>R1 ↔ R2 (FC00::/64)</li>
+      <li>LAN R1 : 2001:DB8:1:1::/64</li>
+      <li>LAN R1 : 2001:DB8:1:2::/64</li>
+      <li>LAN R2 : 2001:DB8:2::/64</li>
+    </ul>
+
+  </div>
+
+  <div class="card">
+    <h2>⚙️ Configuration R1</h2>
+
+    <code>
+enable
+conf t
+ipv6 unicast-routing
+
+interface fa0/0
+ipv6 address FC00::1/64
+no shutdown
+
+interface fa0/1
+ipv6 address 2001:DB8:1:1::1/64
+no shutdown
+
+interface fa1/0
+ipv6 address 2001:DB8:1:2::1/64
+no shutdown
+
+ipv6 route 2001:DB8:2::/64 FC00::2
+end
+    </code>
+
+  </div>
+
+  <div class="card">
+    <h2>⚙️ Configuration R2</h2>
+
+    <code>
+enable
+conf t
+ipv6 unicast-routing
+
+interface fa0/0
+ipv6 address FC00::2/64
+no shutdown
+
+interface fa0/1
+ipv6 address 2001:DB8:2::1/64
+no shutdown
+
+ipv6 route 2001:DB8:1:1::/64 FC00::1
+ipv6 route 2001:DB8:1:2::/64 FC00::1
+end
+    </code>
+
+  </div>
+
+  <div class="card">
+    <h2>🖥️ Configuration des postes</h2>
+
+    <div class="box">
+      <h3>PC1</h3>
+      <ul>
+        <li>IPv6 : 2001:DB8:1:1::10/64</li>
+        <li>Passerelle : 2001:DB8:1:1::1</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h3>PC2</h3>
+      <ul>
+        <li>IPv6 : 2001:DB8:1:2::10/64</li>
+        <li>Passerelle : 2001:DB8:1:2::1</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h3>PC0</h3>
+      <ul>
+        <li>IPv6 : 2001:DB8:2::10/64</li>
+        <li>Passerelle : 2001:DB8:2::1</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="card">
+    <h2>🔍 Vérifications</h2>
+
+    <code>
+show ipv6 interface brief
+show ipv6 route
+    </code>
+
+    <p>Tests : ping entre réseaux IPv6</p>
+
+  </div>
+
+  <div class="card">
+    <h2>🚀 Résultat attendu</h2>
+
+    <ul>
+      <li class="ok">Routage IPv6 fonctionnel</li>
+      <li class="ok">Communication inter-réseaux OK</li>
+      <li class="ok">SLAAC / auto-configuration possible</li>
+    </ul>
+
+  </div>
+
+</div>
+<script src="script.js"></script>
+<button id="scrollTopBtn" class="scroll-top-btn">↑</button>
+</body>
+</html>

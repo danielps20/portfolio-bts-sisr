@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Syslog</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+    <a href="projets.html" class="back-btn">← Retour aux projets</a>
+    <h2>Syslog</h2>
+
+    <div class="menu-container">
+        <div class="hamburger" id="menuBtn">☰</div>
+
+        <div class="dropdown" id="dropdownMenu">
+            <a href="index.html">Profil</a>
+            <a href="projets.html">Projets</a>
+            <a href="veille.html">Veille</a>
+            <a href="parcours.html">Parcours</a>
+        </div>
+    </div>
+</div>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>🎯 Objectif</h2>
+    <p>
+      Mettre en place un serveur Syslog permettant de centraliser les journaux
+      (logs) des équipements réseau : routeurs, switchs, serveurs et pare-feu.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>🟢 Option 1 - Linux (recommandé)</h2>
+
+    <div class="box">
+      <h3>1️⃣ Installation</h3>
+      <code>sudo apt update
+sudo apt install rsyslog -y</code>
+    </div>
+
+    <div class="box">
+      <h3>2️⃣ Activation réception logs</h3>
+      <code># UDP
+module(load="imudp")
+input(type="imudp" port="514")
+
+# TCP
+module(load="imtcp")
+input(type="imtcp" port="514")</code>
+    </div>
+
+    <div class="box">
+      <h3>3️⃣ Redémarrage</h3>
+      <code>sudo systemctl restart rsyslog</code>
+    </div>
+
+    <div class="box">
+      <h3>4️⃣ Vérification logs</h3>
+      <code>tail -f /var/log/syslog</code>
+    </div>
+
+    <div class="box">
+      <h3>5️⃣ Pare-feu</h3>
+      <code>sudo ufw allow 514/udp
+sudo ufw allow 514/tcp</code>
+    </div>
+
+  </div>
+
+  <div class="card">
+    <h2>🪟 Option 2 - Windows</h2>
+
+    <h3>Outils</h3>
+    <ul>
+      <li>Kiwi Syslog Server</li>
+      <li>Syslog Watcher</li>
+      <li>Graylog</li>
+    </ul>
+
+    <h3>Kiwi Syslog</h3>
+    <ul>
+      <li>Écoute UDP 514</li>
+      <li>Interface graphique pour logs</li>
+      <li>Configuration simple</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>⚙️ Configuration équipements réseau</h2>
+
+    <code>conf t
+logging host 192.168.1.10
+logging trap informational
+logging on
+exit</code>
+
+    <p class="warn">192.168.1.10 = IP du serveur Syslog</p>
+  </div>
+
+  <div class="card">
+    <h2>🧪 Résultat attendu</h2>
+
+    <ul>
+      <li class="good">Serveur Syslog fonctionnel</li>
+      <li class="good">Logs centralisés</li>
+      <li class="good">Logs accessibles en temps réel</li>
+    </ul>
+
+  </div>
+
+</div>
+<script src="script.js"></script>
+<button id="scrollTopBtn" class="scroll-top-btn">↑</button>
+</body>
+</html>

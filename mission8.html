@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Port Security</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+    <a href="projets.html" class="back-btn">← Retour aux projets</a>
+    <h2>Port Security</h2>
+
+    <div class="menu-container">
+        <div class="hamburger" id="menuBtn">☰</div>
+
+        <div class="dropdown" id="dropdownMenu">
+            <a href="index.html">Profil</a>
+            <a href="projets.html">Projets</a>
+            <a href="veille.html">Veille</a>
+            <a href="parcours.html">Parcours</a>
+        </div>
+    </div>
+</div>
+</header>
+<div class="container">
+
+  <div class="card">
+    <h2>🎯 Objectif</h2>
+    <p>
+      Sécuriser les ports des switchs en limitant à une seule adresse MAC par port grâce à Port Security.
+      Toute violation entraîne la désactivation automatique du port.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>🧠 Principe</h2>
+    <ul>
+      <li>1 seule MAC autorisée par port</li>
+      <li>Apprentissage automatique (sticky)</li>
+      <li>Violation → shutdown du port</li>
+      <li>Protection contre MAC flooding et intrusions physiques</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>🛠️ Configuration de base</h2>
+
+    <code>
+interface fa0/1
+switchport mode access
+switchport port-security
+switchport port-security maximum 1
+switchport port-security violation shutdown
+switchport port-security mac-address sticky
+exit
+    </code>
+
+  </div>
+
+  <div class="card">
+    <h2>🔁 Configuration sur plusieurs ports</h2>
+
+    <code>
+interface range fa0/1 - 10
+switchport mode access
+switchport port-security
+switchport port-security maximum 1
+switchport port-security violation shutdown
+switchport port-security mac-address sticky
+exit
+    </code>
+
+  </div>
+
+  <div class="card">
+    <h2>🔍 Vérifications</h2>
+
+    <div class="box">
+      <h3>État du port</h3>
+      <code>show port-security interface fa0/1</code>
+      <p class="ok">✔ Maximum MAC = 1 | Violation = Shutdown</p>
+    </div>
+
+    <div class="box">
+      <h3>MAC apprises</h3>
+      <code>show port-security address</code>
+    </div>
+
+  </div>
+
+  <div class="card">
+    <h2>🚨 Comportement en cas de violation</h2>
+
+    <ul>
+      <li class="bad">Port passe en err-disabled</li>
+      <li class="bad">Plus de trafic</li>
+      <li class="bad">LED rouge (Packet Tracer)</li>
+    </ul>
+
+  </div>
+
+  <div class="card">
+    <h2>🧪 Test</h2>
+
+    <ul>
+      <li>PC connecté → OK</li>
+      <li>Remplacement PC → violation</li>
+      <li>Port désactivé automatiquement</li>
+    </ul>
+
+  </div>
+
+  <div class="card">
+    <h2>🔧 Réactivation port</h2>
+
+    <code>
+interface fa0/1
+shutdown
+no shutdown
+    </code>
+
+  </div>
+
+  <div class="card">
+    <h2>✅ Résultat attendu</h2>
+
+    <ul>
+      <li class="ok">1 seule MAC par port</li>
+      <li class="ok">Ports sécurisés</li>
+      <li class="ok">Blocage automatique des intrusions</li>
+    </ul>
+
+  </div>
+
+</div>
+<script src="script.js"></script>
+<button id="scrollTopBtn" class="scroll-top-btn">↑</button>
+</body>
+</html>

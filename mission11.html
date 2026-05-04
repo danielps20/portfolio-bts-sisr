@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sauvegarde VM USB</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+    <a href="projets.html" class="back-btn">← Retour aux projets</a>
+    <h2>Sauvegarde VM USB</h2>
+
+    <div class="menu-container">
+        <div class="hamburger" id="menuBtn">☰</div>
+
+        <div class="dropdown" id="dropdownMenu">
+            <a href="index.html">Profil</a>
+            <a href="projets.html">Projets</a>
+            <a href="veille.html">Veille</a>
+            <a href="parcours.html">Parcours</a>
+        </div>
+    </div>
+</div>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>🎯 Objectif</h2>
+<p>Créer une méthode professionnelle pour sauvegarder une machine virtuelle VirtualBox sur une clé USB en utilisant <b>tar + Zstandard (zstd)</b>, avec optimisation, automatisation et vérification d’intégrité.</p>
+</div>
+
+<div class="card">
+<h2>🧠 Principe</h2>
+<ul>
+<li>Compression rapide avec zstd</li>
+<li>Archivage avec tar</li>
+<li>Optimisation multi-cœurs (-T0)</li>
+<li>Redondance possible sur plusieurs supports</li>
+<li>Vérification avec SHA-256</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>📦 Pré-requis</h2>
+<code>sudo apt install zstd pv -y</code>
+<ul>
+<li>VM éteinte</li>
+<li>Clé USB en exFAT ou NTFS</li>
+<li>VirtualBox installé</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>⚙️ Commande principale</h2>
+<code>time tar -I "zstd -T0 -10" -cvf ma_vm.tar.zst "NomDeLaVM"</code>
+<p><span class="badge">✔ Compression rapide et efficace</span></p>
+</div>
+
+<div class="card">
+<h2>🚀 Décompression</h2>
+<code>tar -I zstd -xvf ma_vm.tar.zst</code>
+</div>
+
+<div class="card">
+<h2>📊 Optimisation VM avant backup</h2>
+<code>VBoxManage modifymedium disk disque.vdi --compact</code>
+<p>Réduit fortement la taille du disque virtuel avant compression.</p>
+</div>
+
+<div class="card">
+<h2>🔁 Alias Bash (automatisation)</h2>
+<code>
+alias tarzst='time tar -I "zstd -T0 -10" -cvf'
+alias untarzst='time tar -I zstd -xvf'
+</code>
+<p>Ajout dans ~/.bashrc puis : source ~/.bashrc</p>
+</div>
+
+<div class="card">
+<h2>📁 Sauvegarde sur clé USB</h2>
+<code>
+cp ma_vm.tar.zst /media/$USER/NOM_CLE/
+</code>
+<p>⚠ Vérifier que la clé supporte les fichiers >4Go</p>
+</div>
+
+<div class="card">
+<h2>🔐 Vérification intégrité</h2>
+<code>
+sha256sum ma_vm.tar.zst > ma_vm.sha256
+sha256sum -c ma_vm.sha256
+</code>
+<p>✔ Permet de garantir que la VM n’est pas corrompue</p>
+</div>
+
+<div class="card">
+<h2>⏱ Mesure des performances</h2>
+<code>time tar -I "zstd -T0 -10" -cvf ma_vm.tar.zst "VM"</code>
+<ul>
+<li><b>real</b> : temps total</li>
+<li><b>user</b> : CPU utilisé</li>
+<li><b>sys</b> : système</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>📈 Variante avancée (pipeline)</h2>
+<code>tar -cf - "VM" | zstd -T0 -10 -o ma_vm.tar.zst</code>
+</div>
+
+<div class="card">
+<h2>💡 Bonnes pratiques</h2>
+<ul>
+<li>Éteindre la VM avant sauvegarde</li>
+<li>Supprimer snapshots inutiles</li>
+<li>Utiliser exFAT pour compatibilité</li>
+<li>Faire une double sauvegarde (2 clés USB)</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>🏁 Conclusion</h2>
+<p>Cette méthode permet une sauvegarde rapide, compressée et fiable des machines virtuelles. L’association <b>tar + zstd</b> offre un excellent compromis entre performance et sécurité des données.</p>
+</div>
+
+</div>
+<script src="script.js"></script>
+<button id="scrollTopBtn" class="scroll-top-btn">↑</button>
+</body>
+</html>

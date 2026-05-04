@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EtherChannel</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+    <a href="projets.html" class="back-btn">← Retour aux projets</a>
+    <h2>EtherChannel</h2>
+
+    <div class="menu-container">
+        <div class="hamburger" id="menuBtn">☰</div>
+
+        <div class="dropdown" id="dropdownMenu">
+            <a href="index.html">Profil</a>
+            <a href="projets.html">Projets</a>
+            <a href="veille.html">Veille</a>
+            <a href="parcours.html">Parcours</a>
+        </div>
+    </div>
+</div>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>🧩 Objectif</h2>
+    <p>
+      Mettre en place un EtherChannel entre Switch4 et Switch5 afin d’augmenter la bande passante et assurer la redondance.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>🔎 Topologie</h2>
+
+    <ul>
+      <li>Switch4 ↔ Switch5</li>
+      <li>Liaisons physiques : Fa0/2 et Fa0/4</li>
+      <li>Protocol : LACP</li>
+      <li>VLAN : 2 et 3</li>
+    </ul>
+
+  </div>
+
+  <div class="card">
+    <h2>🔧 Configuration Switch5</h2>
+
+    <code>
+enable
+configure terminal
+interface range fa0/2 , fa0/4
+switchport mode trunk
+switchport trunk allowed vlan 2,3
+channel-group 1 mode active
+exit
+
+interface port-channel 1
+switchport mode trunk
+switchport trunk allowed vlan 2,3
+exit
+end
+    </code>
+
+  </div>
+
+  <div class="card">
+    <h2>🔧 Configuration Switch4</h2>
+
+    <code>
+enable
+configure terminal
+interface range fa0/1 , fa0/4
+switchport mode trunk
+switchport trunk allowed vlan 2,3
+channel-group 1 mode active
+exit
+
+interface port-channel 1
+switchport mode trunk
+switchport trunk allowed vlan 2,3
+exit
+end
+    </code>
+
+  </div>
+
+  <div class="card">
+    <h2>🔍 Vérifications</h2>
+
+    <div class="box">
+      <h3>EtherChannel</h3>
+      <code>show etherchannel summary</code>
+      <p class="ok">✔ SU = actif | P = ports agrégés</p>
+    </div>
+
+    <div class="box">
+      <h3>Trunk</h3>
+      <code>show interfaces trunk</code>
+      <p class="ok">✔ Port-channel1 en trunk VLAN 2,3</p>
+    </div>
+
+  </div>
+
+  <div class="card">
+    <h2>🚀 Résultat attendu</h2>
+
+    <ul>
+      <li class="ok">Bande passante doublée</li>
+      <li class="ok">Redondance automatique</li>
+      <li class="ok">VLAN 2 et 3 fonctionnels</li>
+      <li class="ok">STP optimisé</li>
+    </ul>
+
+  </div>
+
+  <div class="card">
+    <h2>🧪 Test</h2>
+
+    <ul>
+      <li>Ping entre VLAN 2 et 3</li>
+      <li>Débrancher un câble → trafic toujours OK</li>
+    </ul>
+
+  </div>
+
+</div>
+<script src="script.js"></script>
+<button id="scrollTopBtn" class="scroll-top-btn">↑</button>
+</body>
+</html>

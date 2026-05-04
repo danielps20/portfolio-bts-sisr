@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VLAN</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+    <a href="projets.html" class="back-btn">← Retour aux projets</a>
+    <h2>VLAN</h2>
+
+    <div class="menu-container">
+        <div class="hamburger" id="menuBtn">☰</div>
+
+        <div class="dropdown" id="dropdownMenu">
+            <a href="index.html">Profil</a>
+            <a href="projets.html">Projets</a>
+            <a href="veille.html">Veille</a>
+            <a href="parcours.html">Parcours</a>
+        </div>
+    </div>
+</div>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>🎯 Objectif</h2>
+    <p>
+      Mise en place de VLAN pour séparer deux ligues sportives sans routage inter-VLAN.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>🧩 Plan d’adressage</h2>
+
+    <table border="1" style="width:100%; border-collapse:collapse;">
+      <tr style="background:#334155;">
+        <th>VLAN</th>
+        <th>Nom</th>
+        <th>Réseau</th>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>ESCRIME</td>
+        <td>172.17.2.0/24</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>VOLLEY</td>
+        <td>172.17.3.0/24</td>
+      </tr>
+    </table>
+
+  </div>
+
+  <div class="card">
+    <h2>🔧 Création des VLAN</h2>
+
+    <code>
+enable
+configure terminal
+vlan 2
+ name ESCRIME
+exit
+vlan 3
+ name VOLLEY
+exit
+    </code>
+
+  </div>
+
+  <div class="card">
+    <h2>🔌 Affectation des ports</h2>
+
+    <div class="box">
+      <h3>VLAN 2 - ESCRIME</h3>
+      <code>
+interface fa0/1
+switchport mode access
+switchport access vlan 2
+exit
+      </code>
+    </div>
+
+    <div class="box">
+      <h3>VLAN 3 - VOLLEY</h3>
+      <code>
+interface fa0/3
+switchport mode access
+switchport access vlan 3
+exit
+      </code>
+    </div>
+
+  </div>
+
+  <div class="card">
+    <h2>🔗 Trunk entre switches</h2>
+
+    <code>
+interface fa0/1
+switchport mode trunk
+switchport trunk allowed vlan 2,3
+exit
+
+interface fa0/2
+switchport mode trunk
+switchport trunk allowed vlan 2,3
+exit
+    </code>
+
+  </div>
+
+  <div class="card">
+    <h2>💻 Configuration des postes</h2>
+
+    <h3>ESCRIME</h3>
+    <ul>
+      <li>IP : 172.17.2.X</li>
+      <li>Masque : 255.255.255.0</li>
+      <li>Passerelle : aucune</li>
+    </ul>
+
+    <h3>VOLLEY</h3>
+    <ul>
+      <li>IP : 172.17.3.X</li>
+      <li>Masque : 255.255.255.0</li>
+      <li>Passerelle : aucune</li>
+    </ul>
+
+  </div>
+
+  <div class="card">
+    <h2>🧪 Résultat attendu</h2>
+
+    <ul>
+      <li class="ok">Séparation des VLAN OK</li>
+      <li class="ok">Communication intra-VLAN OK</li>
+      <li class="warn">Inter-VLAN bloqué (pas de routage)</li>
+    </ul>
+
+  </div>
+
+</div>
+<script src="script.js"></script>
+<button id="scrollTopBtn" class="scroll-top-btn">↑</button>
+</body>
+</html>

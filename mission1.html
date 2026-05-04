@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infrastructure réseau</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+    <a href="projets.html" class="back-btn">← Retour aux projets</a>
+    <h2>Infrastructure réseau</h2>
+
+    <div class="menu-container">
+        <div class="hamburger" id="menuBtn">☰</div>
+
+        <div class="dropdown" id="dropdownMenu">
+            <a href="index.html">Profil</a>
+            <a href="projets.html">Projets</a>
+            <a href="veille.html">Veille</a>
+            <a href="parcours.html">Parcours</a>
+        </div>
+    </div>
+</div>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>🧩 1. Comprendre la topologie</h2>
+
+    <div class="zone">
+      <h3>🟩 Réseau local (172.17.0.0/24)</h3>
+      <ul>
+        <li>1 PC</li>
+        <li>1 Laptop (Wi-Fi)</li>
+        <li>1 Access Point</li>
+        <li>2 Switchs</li>
+        <li>1 serveur</li>
+      </ul>
+    </div>
+
+    <div class="zone">
+      <h3>🟦 Réseau intermédiaire (10.0.0.0/24)</h3>
+      <ul>
+        <li>1 Switch</li>
+        <li>1 serveur</li>
+      </ul>
+    </div>
+
+    <div class="zone">
+      <h3>🟧 Réseau Internet simulé (193.253.0.0/24)</h3>
+      <ul>
+        <li>1 Switch</li>
+        <li>1 PC</li>
+        <li>2 serveurs (dont DNS : 193.253.0.20)</li>
+      </ul>
+    </div>
+
+    <div class="zone">
+      <h3>🔵 Routeur central</h3>
+      <p>Relie les trois réseaux entre eux.</p>
+    </div>
+
+  </div>
+
+  <div class="card">
+    <h2>⚙️ 2. Création de l’infrastructure</h2>
+
+    <h3>Équipements</h3>
+    <ul>
+      <li>1 Router 2911</li>
+      <li>4 Switch 2960</li>
+      <li>2 PC</li>
+      <li>1 Laptop</li>
+      <li>4 serveurs</li>
+      <li>1 Access Point</li>
+    </ul>
+
+    <h3>Connexions</h3>
+    <ul>
+      <li>PC → Switch</li>
+      <li>Switch → Switch</li>
+      <li>Switch → Serveur</li>
+      <li>Switch → Access Point</li>
+      <li>Laptop → Wi-Fi</li>
+      <li>Routeur relie les 3 réseaux</li>
+    </ul>
+
+  </div>
+
+  <div class="card">
+    <h2>🌐 3. Configuration du routeur</h2>
+    <p>Configuration CLI :</p>
+    <code>
+interface gig0/0 ip address 172.17.0.1 255.255.255.0 no shutdown
+interface gig0/1 ip address 10.0.0.1 255.255.255.0 no shutdown
+interface gig0/2 ip address 193.253.0.1 255.255.255.0 no shutdown
+    </code>
+  </div>
+
+  <div class="card">
+    <h2>📡 4. Configuration des machines</h2>
+
+    <h3>Réseau 172.17.0.0</h3>
+    <table>
+      <tr><th>Machine</th><th>IP</th><th>Passerelle</th></tr>
+      <tr><td>PC</td><td>172.17.0.10</td><td>172.17.0.1</td></tr>
+      <tr><td>Laptop</td><td>172.17.0.11</td><td>172.17.0.1</td></tr>
+      <tr><td>Serveur</td><td>172.17.0.20</td><td>172.17.0.1</td></tr>
+    </table>
+
+    <h3>Réseau 193.253.0.0</h3>
+    <table>
+      <tr><th>Machine</th><th>IP</th><th>Passerelle</th></tr>
+      <tr><td>PC</td><td>193.253.0.10</td><td>193.253.0.1</td></tr>
+      <tr><td>DNS</td><td>193.253.0.20</td><td>193.253.0.1</td></tr>
+      <tr><td>Serveur</td><td>193.253.0.30</td><td>193.253.0.1</td></tr>
+    </table>
+
+  </div>
+
+  <div class="card">
+    <h2>🧪 5. Tests réseau</h2>
+    <ul>
+      <li>Ping entre réseaux</li>
+      <li>Test DNS : www.test.com</li>
+      <li>Communication complète entre machines</li>
+    </ul>
+  </div>
+
+</div>
+<script src="script.js"></script>
+<button id="scrollTopBtn" class="scroll-top-btn">↑</button>
+</body>
+</html>
